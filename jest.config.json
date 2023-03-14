@@ -1,0 +1,22 @@
+{
+  "testEnvironment": "node",
+  "roots": ["./src"],
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "transform": { "^.+\\.(t|j)s$": "ts-jest" },
+  "resetMocks": true,
+  "watchPlugins": ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
+  "coverageReporters": ["cobertura", "json", "json-summary", "lcov", "text"],
+  "collectCoverageFrom": [
+    "src/**/*.ts",
+    "!src/**/*.module.ts",
+    "!src/main.ts"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "statements": 90,
+      "branches": 90,
+      "functions": 90,
+      "lines": 90
+    }
+  }
+}
