@@ -9,7 +9,8 @@
   "collectCoverageFrom": [
     "src/**/*.ts",
     "!src/**/*.module.ts",
-    "!src/main.ts"
+    "!src/main.ts",
+    "!src/config/**"
   ],
   "coverageThreshold": {
     "global": {

@@ -1,13 +1,15 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppService {
-  @Inject(ConfigService)
-  public config: ConfigService;
+  constructor(private readonly configService: ConfigService) {}
 
-  getHello(): string {
-    const appName = this.config.get('APP_NAME');
-    return `Hello World from ${appName} Microservice!`;
+  getHello() {
+    return {
+      appName: this.configService.get('app.name'),
+      appCode: this.configService.get('APP_CODE'),
+      message: 'Hello World!',
+    };
   }
 }
