@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
+    "start": "NODE_ENV=local nest start",
+    "start:dev": "NODE_ENV=local nest start --watch",
+    "start:debug": "NODE_ENV=local nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
@@ -58,5 +58,10 @@
       "pnpm lint:fix",
       "pnpm test -- --findRelatedTests --coverageThreshold --passWithNoTests '{}'"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "webpack@>=5.0.0 <5.76.0": ">=5.76.0"
+    }
   }
 }

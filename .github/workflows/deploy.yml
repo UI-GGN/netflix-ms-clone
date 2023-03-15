@@ -59,6 +59,10 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run build
         run: pnpm build
+      - name: Generate .env file
+        run: |
+          touch .env
+          echo APP_CODE=${{ secrets.APP_CODE }} > .env
       - name: Install Vercel CLI
         run: npm i -g vercel
       - name: Pull Vercel Environment Information

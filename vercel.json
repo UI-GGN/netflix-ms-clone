@@ -4,9 +4,6 @@
   "github": {
     "enabled": false
   },
-  "env": {
-    "APP_NAME": "Tamashflix"
-  },
   "builds": [
     {
       "src": "dist/main.js",
