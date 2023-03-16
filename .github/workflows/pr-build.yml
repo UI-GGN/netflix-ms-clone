@@ -2,11 +2,13 @@ name: PR Build
 
 on:
   pull_request:
+    types: [ 'opened', 'reopened', 'synchronize', 'ready_for_review' ]
     branches:
       - main
 
 jobs:
   lint:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -17,6 +19,7 @@ jobs:
         run: pnpm lint
 
   test:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -27,6 +30,7 @@ jobs:
         run: pnpm test:coverage
 
   e2e-test:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -37,6 +41,7 @@ jobs:
         run: pnpm test:e2e
 
   build:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -47,6 +52,7 @@ jobs:
         run: pnpm build
 
   security-scan:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
