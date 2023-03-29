@@ -1,17 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from './auth.service';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { Test, TestingModule } from '@nestjs/testing';
 import appConfig from '../config/app.config';
 import { PrismaModule } from '../prisma/prisma.module';
+import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
-  const envVariables = { APP_CODE: 'TMSF' };
+  const envVariables = { DATABASE_URL: 'mongodb://user:password@host:port/db' };
   let service: AuthService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot({ load: [() => envVariables, appConfig] }), JwtModule.register({}), PrismaModule],
+      imports: [
+        ConfigModule.forRoot({ load: [() => envVariables, appConfig], isGlobal: true }),
+        JwtModule.register({}),
+        PrismaModule,
+      ],
       providers: [AuthService],
     }).compile();
 

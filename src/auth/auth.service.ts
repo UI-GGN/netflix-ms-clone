@@ -1,9 +1,9 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma/prisma.service';
 import { AuthDto } from './dto';
-import * as bcrypt from 'bcrypt';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
@@ -13,10 +13,8 @@ export class AuthService {
     private configService: ConfigService,
   ) {}
 
-  private static HASHING_ROUNDS = 10;
-
   async signup(authDto: AuthDto) {
-    const hash = bcrypt.hashSync(authDto.email + authDto.password, AuthService.HASHING_ROUNDS);
+    const hash = bcrypt.hashSync(authDto.email + authDto.password, +this.configService.get('HASHING_ROUNDS') || 10);
     try {
       const user = await this.prismaService.user.create({
         data: {

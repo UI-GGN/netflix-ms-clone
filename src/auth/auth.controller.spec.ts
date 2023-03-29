@@ -7,12 +7,16 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
 describe('AuthController', () => {
-  const envVariables = { APP_CODE: 'TMSF' };
+  const envVariables = { DATABASE_URL: 'mongodb://user:password@host:port/db' };
   let controller: AuthController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot({ load: [() => envVariables, appConfig] }), JwtModule.register({}), PrismaModule],
+      imports: [
+        ConfigModule.forRoot({ load: [() => envVariables, appConfig], isGlobal: true }),
+        JwtModule.register({}),
+        PrismaModule,
+      ],
       controllers: [AuthController],
       providers: [AuthService],
     }).compile();

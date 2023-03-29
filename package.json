@@ -15,8 +15,9 @@
     "test:coverage": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "sh setupHusky.sh",
-    "db:up": "docker-compose down --rmi all -v --remove-orphans && docker-compose up -d && prisma generate && prisma db push"
+    "prepare": "prisma generate && sh setupHusky.sh",
+    "db:up": "docker-compose down --rmi all -v --remove-orphans && docker-compose up -d && dotenv -e local.env prisma db push",
+    "db:down": "docker-compose down --rmi all -v --remove-orphans"
   },
   "dependencies": {
     "@nestjs/common": "9.3.9",
@@ -49,6 +50,7 @@
     "@types/supertest": "2.0.12",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.54.1",
+    "dotenv-cli": "7.1.0",
     "eslint": "8.22.0",
     "eslint-config-prettier": "8.7.0",
     "eslint-plugin-prettier": "4.2.1",
