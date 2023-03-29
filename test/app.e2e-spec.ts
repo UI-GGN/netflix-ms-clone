@@ -5,7 +5,12 @@ import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import appConfig from '../src/config/app.config';
 
-const envVariables = { APP_CODE: 'TMSF' };
+const envVariables = {
+  APP_CODE: 'TMSF',
+  JWT_SECRET: 'secret',
+  DATABASE_URL: 'test',
+  HASHING_ROUNDS: 10,
+};
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
