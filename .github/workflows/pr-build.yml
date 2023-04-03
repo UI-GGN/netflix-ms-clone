@@ -79,7 +79,7 @@ jobs:
           touch .env
           echo APP_CODE=${{ secrets.APP_CODE }} >> .env
           echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo DATABASE_URL="${{ secrets.DATABASE_URL }}" >> .env
           echo HASHING_ROUNDS=${{ secrets.HASHING_ROUNDS }} >> .env
       - name: Install Vercel CLI
         run: npm i -g vercel
