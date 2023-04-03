@@ -1,5 +1,6 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -9,10 +10,13 @@ async function bootstrap() {
     .setTitle('Tamashflix API doc')
     .setDescription('Tamashflix OpenAPI documentation')
     .setVersion('1.0')
+    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'jwt')
     .build();
+
   const document = SwaggerModule.createDocument(app, config, {
     deepScanRoutes: true,
   });
+
   SwaggerModule.setup('api', app, document, {
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
     customJs: [
@@ -21,6 +25,8 @@ async function bootstrap() {
       'https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.20.3/swagger-ui-standalone-preset.js',
     ],
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }
