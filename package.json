@@ -16,6 +16,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prepare": "prisma generate && sh setupHusky.sh",
+    "db:seed": "prisma db seed",
     "db:up": "docker-compose down --rmi all -v --remove-orphans && docker-compose up -d && dotenv -e local.env prisma db push",
     "db:down": "docker-compose down --rmi all -v --remove-orphans"
   },
@@ -77,5 +78,8 @@
     "overrides": {
       "webpack@>=5.0.0 <5.76.0": ">=5.76.0"
     }
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }
