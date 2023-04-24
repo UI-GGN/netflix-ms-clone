@@ -5,7 +5,12 @@ import * as moviesJson from './movies.json';
 const prisma = new PrismaClient();
 async function main() {
   const movie = await prisma.movie.createMany({
-    data: moviesJson,
+    data: moviesJson.map((movies) => {
+      return {
+        ...movies,
+        createdAt: new Date(),
+      };
+    }),
   });
   console.log({ movie });
 }
