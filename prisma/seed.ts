@@ -6,9 +6,11 @@ const prisma = new PrismaClient();
 async function main() {
   const movie = await prisma.movie.createMany({
     data: moviesJson.map((movies) => {
+      const { star1, star2, star3, star4, ...movieData } = movies;
       return {
-        ...movies,
+        ...movieData,
         createdAt: new Date(),
+        stars: [star1, star2, star3, star4],
       };
     }),
   });
