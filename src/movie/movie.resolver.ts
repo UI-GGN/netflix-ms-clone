@@ -1,5 +1,5 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
-import Movie from './entities/Movie';
+import { Movie } from 'src/@generated/movie/movie.model';
 import { MovieService } from './movie.service';
 
 @Resolver(() => Movie)

@@ -8,6 +8,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator nestgraphql {
+    provider = "node node_modules/prisma-nestjs-graphql"
+    output = "../src/@generated"
+}
+
+
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
