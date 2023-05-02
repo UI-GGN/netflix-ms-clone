@@ -18,3 +18,24 @@ model User {
 
   @@map("users")
 }
+
+model Movie {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  thumbnail     String
+  title         String
+  releasedYear  Int
+  certificate   String?
+  runtime       String
+  genre         String
+  rating        Float
+  description   String
+  metaScore     Int?
+  director      String
+  cast         String[]
+  numberOfVotes Int
+  gross         String?
+
+  @@map("movies")
+}
