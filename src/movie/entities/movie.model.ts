@@ -9,6 +9,12 @@ export class Movie {
   @Field(() => ID, { nullable: false })
   id!: string;
 
+  @Field(() => Date, { nullable: false })
+  createdAt!: Date;
+
+  @Field(() => Date, { nullable: false })
+  updatedAt!: Date;
+
   @Field(() => String, { nullable: false })
   thumbnail!: string;
 
@@ -39,17 +45,8 @@ export class Movie {
   @Field(() => String, { nullable: false })
   director!: string;
 
-  @Field(() => String, { nullable: false })
-  star1!: string;
-
-  @Field(() => String, { nullable: false })
-  star2!: string;
-
-  @Field(() => String, { nullable: false })
-  star3!: string;
-
-  @Field(() => String, { nullable: false })
-  star4!: string;
+  @Field(() => [String], { nullable: true })
+  cast!: Array<string>;
 
   @Field(() => Int, { nullable: false })
   numberOfVotes!: number;
