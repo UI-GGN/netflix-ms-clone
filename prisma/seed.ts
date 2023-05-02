@@ -10,7 +10,7 @@ async function main() {
       return {
         ...movieData,
         createdAt: new Date(),
-        stars: [star1, star2, star3, star4],
+        cast: [star1, star2, star3, star4],
       };
     }),
   });

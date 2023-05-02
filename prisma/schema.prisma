@@ -33,7 +33,7 @@ model Movie {
   description   String
   metaScore     Int?
   director      String
-  stars         String[]
+  cast         String[]
   numberOfVotes Int
   gross         String?
 
