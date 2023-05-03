@@ -15,7 +15,7 @@
     "test:coverage": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "prisma generate --generator client && sh setupHusky.sh",
+    "prepare": "sh setupHusky.sh",
     "db:seed": "prisma db seed",
     "db:up": "docker-compose down --rmi all -v --remove-orphans && docker-compose up -d && dotenv -e local.env prisma db push",
     "db:down": "docker-compose down --rmi all -v --remove-orphans"
