@@ -62,6 +62,11 @@ $ pnpm lint:fix
 $ pnpm build
 ```
 
+
+Developer Docs - 
+
+1. Using `npx prisma generate --generator nestgraphql` to generate model for graphql. On running given command, prisma will generate all the models, resolver etc in the generated folder. we can use this to quickly generate what is needed. note that for sake of consistency please move the required files to respective folder (eg. entity in case of model generation)
+
 ## Contributing
 
 1. Create branch with name `TMSF-<ISSUE_NUMBER>`.
@@ -71,3 +76,5 @@ $ pnpm build
    `<chore|feat|fix>: [TMSF-<ISSUE_NUMBER>] - <commit-message>`
 5. Raise the PR and make sure all checks in GitHub actions are passing.
 6. Make sure to link the PR with corresponding issue.
+
+Testing
