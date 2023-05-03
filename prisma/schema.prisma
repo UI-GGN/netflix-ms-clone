@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets= ["darwin","debian-openssl-1.1.x","rhel-openssl-1.0.x"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["darwin", "debian-openssl-1.1.x", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
@@ -9,10 +9,9 @@ datasource db {
 }
 
 generator nestgraphql {
-    provider = "node node_modules/prisma-nestjs-graphql"
-    output = "../src/@generated"
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output   = "./@generated"
 }
-
 
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -39,7 +38,7 @@ model Movie {
   description   String
   metaScore     Int?
   director      String
-  cast         String[]
+  cast          String[]
   numberOfVotes Int
   gross         String?
 

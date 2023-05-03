@@ -40,3 +40,6 @@ lerna-debug.log*
 
 # Git Hooks
 .husky
+
+# Prisma
+prisma/@generated
