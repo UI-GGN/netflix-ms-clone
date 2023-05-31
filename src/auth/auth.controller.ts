@@ -1,8 +1,9 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
 import { AuthResponse } from './entities/authResponse';
+import { RecaptchaGuard } from './recaptcha.guard';
 
 @Controller('auth')
 @ApiTags('auth')
@@ -11,6 +12,7 @@ export class AuthController {
 
   @Post('signup')
   @ApiCreatedResponse({ type: AuthResponse })
+  @UseGuards(RecaptchaGuard)
   signup(@Body() authDto: AuthDto) {
     return this.authService.signup(authDto);
   }

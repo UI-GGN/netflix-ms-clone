@@ -1,3 +1,4 @@
+import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
@@ -14,6 +15,7 @@ describe('AuthController', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.forRoot({ load: [() => envVariables, appConfig], isGlobal: true }),
+        HttpModule,
         JwtModule.register({}),
         PrismaModule,
       ],
