@@ -11,4 +11,9 @@ export class AuthDto {
   @IsString()
   @ApiProperty()
   password: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty()
+  recaptchaValue: string;
 }
