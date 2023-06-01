@@ -19,6 +19,7 @@ export class AuthController {
 
   @Post('signin')
   @ApiOkResponse({ type: AuthResponse })
+  @UseGuards(RecaptchaGuard)
   signin(@Body() authDto: AuthDto) {
     return this.authService.signin(authDto);
   }
