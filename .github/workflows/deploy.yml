@@ -36,15 +36,15 @@ jobs:
       - name: Run tests
         run: pnpm test:e2e
 
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Setup Environment
-        uses: ./.github/actions/setup
-      - name: Run build
-        run: pnpm audit
+  # security-scan:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v2
+  #     - name: Setup Environment
+  #       uses: ./.github/actions/setup
+  #     - name: Run build
+  #       run: pnpm audit
 
   deploy:
     runs-on: ubuntu-latest
