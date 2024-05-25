@@ -1,6 +1,6 @@
 # TAMASHFLIX-MS
 
-Microservice for TAMASHFLIX
+Microservice for TAMASHFLIX app
 
 ## Local setup
 
